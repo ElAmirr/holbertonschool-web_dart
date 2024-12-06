@@ -1,15 +1,11 @@
 void main(List<String> args) {
-  if (args.isEmpty) {
-    print('Please provide a number as an argument.');
-    return;
-  }
-  
-  var number = int.parse(args[0]);
-  if (number > 0) {
-    print('$number is positive');
-  } else if (number == 0) {
-    print('$number is zero');
+  var num = int.parse(args[0]);
+
+  if (num > 0) {
+    print("$num is positive");
+  } else if (num < 0) {
+    print("$num is negative");
   } else {
-    print('$number is negative');
+    print("0 is zero");
   }
 }

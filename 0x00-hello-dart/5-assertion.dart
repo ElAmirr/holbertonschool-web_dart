@@ -1,5 +1,7 @@
-void main() {
-  var nb = 79; // Replace this with the actual value you want to test
-  assert(nb >= 80, 'The score must be bigger or equal to 80');
+void main(List<String> args) {
+  int score = int.parse(args[0]);
+
+  assert(score >= 80,
+      'Uncaught Error: Assertion failed: "The score must be bigger or equal to 80');
   print('You Passed');
 }
