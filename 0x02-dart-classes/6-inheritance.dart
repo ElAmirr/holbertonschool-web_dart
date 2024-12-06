@@ -5,38 +5,42 @@ class User extends Password {
   String name;
   int age;
   double height;
+
+  // Property for user_password
   String user_password;
 
+  // Constructor
   User({
     required this.id,
     required this.name,
     required this.age,
     required this.height,
-    required this.user_password,
-  }) : super(password: user_password);
+    required String user_password,
+  })  : user_password = user_password,
+        super(password: user_password);
 
+  // Method to convert User to JSON
   Map<String, dynamic> toJson() {
     return {
       'id': id,
       'name': name,
       'age': age,
       'height': height,
-      'user_password': user_password,
     };
   }
 
-  static User fromJson(Map<dynamic, dynamic> userJson) {
-    return User(
-      id: userJson['id'],
-      name: userJson['name'],
-      age: userJson['age'],
-      height: userJson['height'],
-      user_password: userJson['user_password'],
-    );
-  }
+  // Named constructor to create a User from JSON
+  User.fromJson(Map<String, dynamic> json)
+      : id = json['id'] ?? 0,
+        name = json['name'] ?? '',
+        age = json['age'] ?? 0,
+        height = json['height']?.toDouble() ?? 0.0,
+        user_password = json['user_password'] ?? '',
+        super(password: json['user_password'] ?? '');
 
+  // Override toString method
   @override
   String toString() {
-    return 'User(id: $id, name: $name, age: $age, height: $height, Password: ${isValid()})';
+    return 'User(id : $id ,name: $name, age: $age, height: $height, Password: ${isValid()})';
   }
 }
